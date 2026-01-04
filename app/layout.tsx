@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   description:
     "Computational biologist working on multi-omics, systems biology, network biology, and machine learning.",
-  metadataBase: new URL("http://localhost:3000"), // change after deploy to your Vercel/custom domain
+  metadataBase: new URL("https://personalwebsite-delta-olive.vercel.app"), // change after deploy to your Vercel/custom domain
   openGraph: {
     title: "Dipanka Tanu Sarmah",
     description:
