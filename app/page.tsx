@@ -17,6 +17,14 @@ function Tag({ label }: { label: string }) {
   );
 }
 
+function Pill({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="rounded-full border border-sky-200/60 bg-white/45 px-3 py-1 text-xs text-slate-700 backdrop-blur dark:border-sky-900/40 dark:bg-slate-950/25 dark:text-slate-200">
+      {children}
+    </span>
+  );
+}
+
 function SectionTitle({
   title,
   subtitle,
@@ -29,11 +37,11 @@ function SectionTitle({
   return (
     <div className="flex flex-wrap items-end justify-between gap-3">
       <div>
-        <h2 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-2xl">
+        <h2 className="text-2xl font-bold tracking-tight text-[color:var(--text-strong)] sm:text-3xl">
           {title}
         </h2>
         {subtitle ? (
-          <p className="mt-1 max-w-2xl text-sm text-slate-600 dark:text-slate-300">
+          <p className="mt-2 max-w-2xl text-base text-[color:var(--text)]">
             {subtitle}
           </p>
         ) : null}
@@ -43,20 +51,12 @@ function SectionTitle({
   );
 }
 
-function Pill({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-full border border-sky-200/60 bg-white/45 px-3 py-1 text-xs text-slate-700 backdrop-blur dark:border-sky-900/40 dark:bg-slate-950/25 dark:text-slate-200">
-      {children}
-    </span>
-  );
-}
-
 export default function Home() {
   const featured = projects.slice(0, 3);
 
   return (
     <div className="container-lab space-y-14 py-10">
-      {/* HERO (calm, modern lab; keep your network background) */}
+      {/* HERO */}
       <section className="relative overflow-hidden rounded-3xl border border-sky-200/50 bg-white/40 p-8 backdrop-blur-md dark:border-sky-900/35 dark:bg-slate-950/20 sm:p-12">
         <NetworkBackground opacity={0.8} />
 
@@ -73,41 +73,30 @@ export default function Home() {
         {/* Subtle vignette */}
         <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_140px_rgba(2,6,23,0.07)] dark:shadow-[inset_0_0_180px_rgba(0,0,0,0.45)]" />
 
-        <div className="relative z-10">
-          <p className="text-sm font-medium text-slate-700 dark:text-slate-200">
+        <div className="relative z-10 max-w-3xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--text-muted)]">
             Computational Biology • Multi-omics • Network Biology • ML
           </p>
 
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+          <h1 className="mt-4 text-5xl font-bold tracking-tight text-[color:var(--text-strong)] sm:text-6xl">
             Hi, I’m Dipanka
           </h1>
 
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-700 dark:text-slate-200 sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-[color:var(--text)] sm:text-lg">
             I work on multi-omics systems biology, network-centric target
             discovery, and reproducible computational methods across
             neurodegeneration and cancer.
           </p>
 
-          {/* CTAs: one primary + two quiet links (more “lab site”, less “SaaS”) */}
-          <div className="mt-7 flex flex-wrap items-center gap-4">
-            <a
-              href="/cv.pdf"
-              className="inline-flex h-10 items-center justify-center rounded-xl bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-200"
-            >
+          {/* CTAs (token buttons fix dark/light issues) */}
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a href="/cv.pdf" className="btn-primary">
               Download CV
             </a>
-
-            <Link
-              href="/projects"
-              className="text-sm font-semibold text-slate-900 underline underline-offset-4 hover:text-slate-700 dark:text-white dark:hover:text-slate-200"
-            >
+            <Link href="/projects" className="btn-secondary">
               View projects
             </Link>
-
-            <Link
-              href="/publications"
-              className="text-sm font-semibold text-slate-900 underline underline-offset-4 hover:text-slate-700 dark:text-white dark:hover:text-slate-200"
-            >
+            <Link href="/publications" className="btn-link">
               Publications
             </Link>
           </div>
@@ -120,9 +109,9 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="hairline" />
+      <div className="divider-strong" />
 
-      {/* WHAT I DO (tiles, not boxed cards) */}
+      {/* WHAT I DO */}
       <section className="space-y-6">
         <SectionTitle
           title="What I do"
@@ -151,10 +140,10 @@ export default function Home() {
               key={x.title}
               className="rounded-2xl bg-slate-50/70 p-6 transition hover:bg-slate-50 dark:bg-white/5 dark:hover:bg-white/10"
             >
-              <h3 className="text-sm font-semibold tracking-tight text-slate-900 dark:text-white">
+              <h3 className="text-sm font-semibold tracking-tight text-[color:var(--text-strong)]">
                 {x.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-200">
+              <p className="mt-2 text-sm leading-relaxed text-[color:var(--text)]">
                 {x.text}
               </p>
             </div>
@@ -162,19 +151,16 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="hairline" />
+      <div className="divider-strong" />
 
-      {/* FEATURED PROJECTS (lighter tiles, less shadow/border) */}
+      {/* FEATURED PROJECTS */}
       <section className="space-y-6">
         <SectionTitle
-          title="Featured Projects"
+          title="Featured projects"
           subtitle="A few highlighted projects. See the Projects page for the full list."
           right={
-            <Link
-              className="text-sm font-semibold text-slate-900 underline underline-offset-4 hover:text-slate-700 dark:text-white dark:hover:text-slate-200"
-              href="/projects"
-            >
-              View all
+            <Link href="/projects" className="btn-link">
+              View all →
             </Link>
           }
         />
@@ -190,10 +176,10 @@ export default function Home() {
                 rel={external ? "noopener noreferrer" : undefined}
                 className="group rounded-2xl bg-slate-50/70 p-6 transition hover:bg-slate-50 dark:bg-white/5 dark:hover:bg-white/10"
               >
-                <h3 className="text-sm font-semibold tracking-tight text-slate-900 group-hover:underline dark:text-white">
+                <h3 className="text-sm font-semibold tracking-tight text-[color:var(--text-strong)] group-hover:underline">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-700 dark:text-slate-200">
+                <p className="mt-2 text-sm leading-relaxed text-[color:var(--text)]">
                   {p.description}
                 </p>
 
@@ -208,18 +194,15 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="hairline" />
+      <div className="divider-strong" />
 
-      {/* PUBLICATIONS (calm callout band, not a boxed card) */}
+      {/* PUBLICATIONS */}
       <section className="rounded-3xl bg-slate-50/70 p-8 dark:bg-white/5">
         <SectionTitle
           title="Publications"
           subtitle="Auto-synced from ORCID. Full list, filters, and external links are available."
           right={
-            <Link
-              className="inline-flex h-10 items-center justify-center rounded-xl border border-neutral-200 bg-white/70 px-4 text-sm font-semibold text-slate-900 hover:bg-white dark:border-neutral-800 dark:bg-neutral-950/40 dark:text-slate-100 dark:hover:bg-neutral-900"
-              href="/publications"
-            >
+            <Link href="/publications" className="btn-secondary">
               View publications
             </Link>
           }
