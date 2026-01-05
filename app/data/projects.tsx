@@ -14,6 +14,19 @@ export const projects: Project[] = [
     href: "#",
   },
   {
+  title: "SciNexus",
+  href: "https://github.com/dipankatanu/SciNexus",
+  description:
+    "An interactive platform for exploring scientific concepts, networks, and relationships, aimed at improving scientific reasoning and reproducibility through visual and computational tools.",
+  tags: [
+    "Scientific reasoning",
+    "Networks",
+    "Visualization",
+    "Reproducibility",
+    "Open source",
+  ],
+},
+{
     title: "RNA–Protein Discordance (Nextflow)",
     description:
       "Reproducible workflow for paired RNA–protein analysis with QC, normalization, discordance scoring, and figures.",

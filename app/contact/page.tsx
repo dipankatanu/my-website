@@ -8,35 +8,55 @@ export const metadata: Metadata = {
     "Contact Dipanka Tanu Sarmah — collaboration, consulting, and research inquiries.",
 };
 
-function ContactCard({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="rounded-2xl border border-sky-200/60 bg-white/60 p-6 shadow-sm backdrop-blur-md dark:border-sky-900/40 dark:bg-slate-950/30">
-      <h2 className="text-sm font-semibold tracking-tight text-slate-900 dark:text-white">
-        {title}
-      </h2>
-      <div className="mt-3 text-sm text-slate-700 dark:text-slate-200">
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function PillLink({ href, label }: { href: string; label: string }) {
+function Chip({ href, label }: { href: string; label: string }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center rounded-full border border-sky-200/60 bg-white/50 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-white dark:border-sky-900/40 dark:bg-slate-950/25 dark:text-slate-200 dark:hover:bg-slate-900/30"
+      className="inline-flex items-center rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-medium text-slate-700 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-900/40"
     >
       {label}
     </a>
+  );
+}
+
+function ButtonLink({
+  href,
+  children,
+  variant = "primary",
+  external = false,
+}: {
+  href: string;
+  children: React.ReactNode;
+  variant?: "primary" | "outline";
+  external?: boolean;
+}) {
+  const base =
+    "inline-flex h-10 items-center justify-center rounded-md px-4 text-sm font-semibold transition";
+  const styles =
+    variant === "primary"
+      ? "bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-200"
+      : "border border-neutral-200 bg-white text-slate-900 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-slate-950 dark:text-slate-100 dark:hover:bg-slate-900/40";
+
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${base} ${styles}`}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  // Use Link for internal paths (like /cv.pdf) for consistency
+  return (
+    <Link href={href} className={`${base} ${styles}`}>
+      {children}
+    </Link>
   );
 }
 
@@ -81,108 +101,111 @@ Thanks!
     submitSubject
   )}&body=${encodeURIComponent(submitBody)}`;
 
-  return (
-    <div className="space-y-10">
-      <header className="space-y-3">
-        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
-          Contact
-        </h1>
-        <p className="max-w-2xl text-slate-700 dark:text-slate-200">
-          I’m happy to discuss research collaborations, project supervision,
-          consulting, and reproducible computational workflows. The fastest way
-          to reach me is by email.
-        </p>
-      </header>
+  const inquiryMailto = `mailto:${email}?subject=${encodeURIComponent(
+    "Hello Dipanka — inquiry"
+  )}`;
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <ContactCard title="Email">
-          <p>
-            <span className="text-slate-600 dark:text-slate-300">
-              Preferred contact:
-            </span>{" "}
+  return (
+    <div className="mx-auto w-full max-w-5xl space-y-12 px-4 py-8">
+      {/* HERO (no boxed cards) */}
+      <header className="grid gap-8 md:grid-cols-2 md:items-start">
+        <div className="space-y-3">
+          <h1 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
+            Contact
+          </h1>
+          <p className="max-w-2xl text-sm leading-relaxed text-slate-700 dark:text-slate-200">
+            I’m happy to discuss research collaborations, project supervision,
+            consulting, and reproducible computational workflows. The fastest
+            way to reach me is by email.
+          </p>
+
+          <div className="flex flex-wrap gap-2 pt-2">
+            {links.map((l) => (
+              <Chip key={l.label} href={l.href} label={l.label} />
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 md:items-end">
+          <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+            <ButtonLink href={inquiryMailto} variant="primary" external>
+              Email me
+            </ButtonLink>
+
+            <ButtonLink href="/cv.pdf" variant="outline">
+              View CV
+            </ButtonLink>
+          </div>
+
+          <p className="text-xs text-slate-600 dark:text-slate-300 md:text-right">
+            Preferred contact:{" "}
             <a
               className="font-semibold underline underline-offset-4"
-              href={`mailto:${email}?subject=${encodeURIComponent(
-                "Hello Dipanka — inquiry"
-              )}`}
+              href={inquiryMailto}
             >
               {email}
             </a>
           </p>
 
-          <div className="mt-4 flex flex-wrap gap-3">
-            <a
-              href={`mailto:${email}?subject=${encodeURIComponent(
-                "Hello Dipanka — inquiry"
-              )}`}
-              className="inline-flex h-10 items-center rounded-md bg-slate-900 px-4 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-200"
-            >
-              Email me
-            </a>
-
-            <Link
-              href="/cv.pdf"
-              className="inline-flex h-10 items-center rounded-md border border-sky-300/70 bg-white/70 px-4 text-sm font-semibold text-slate-900 hover:bg-white dark:border-sky-800/60 dark:bg-slate-950/30 dark:text-slate-100 dark:hover:bg-slate-900/40"
-            >
-              View CV
-            </Link>
-          </div>
-
-          <p className="mt-4 text-xs text-slate-600 dark:text-slate-300">
+          <p className="max-w-sm text-xs text-slate-600 dark:text-slate-300 md:text-right">
             For project-related messages, a short dataset summary + goals +
             timeline helps me respond faster.
           </p>
-        </ContactCard>
+        </div>
+      </header>
 
-        <ContactCard title="Profiles & Academic Links">
-          <p>Research outputs, code, and professional profiles:</p>
-
-          <div className="mt-4 flex flex-wrap gap-2">
-            {links.map((l) => (
-              <PillLink key={l.label} href={l.href} label={l.label} />
-            ))}
+      {/* SUBMIT A PITFALL (single slim callout) */}
+      <section className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 dark:border-neutral-800 dark:bg-slate-950/30">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="text-sm font-semibold tracking-tight text-slate-900 dark:text-white">
+              Submit a pitfall
+            </h2>
+            <p className="mt-1 text-xs text-slate-700 dark:text-slate-200">
+              Have a bioinformatics “gotcha” you’ve seen in the wild? Send it
+              and I can add it to the Debug Your Science collection.
+            </p>
           </div>
 
-          <p className="mt-4 text-xs text-slate-600 dark:text-slate-300">
-            Sharing a DOI, preprint link, or GitHub issue is ideal for technical
-            queries.
-          </p>
-        </ContactCard>
-      </div>
+          <div className="flex flex-wrap gap-2">
+            <ButtonLink href={submitMailto} variant="primary" external>
+              Submit via email
+            </ButtonLink>
 
-      {/* NEW: Submit a pitfall */}
-      <ContactCard title="Submit a pitfall">
-        <p>
-          Have a bioinformatics “gotcha” you’ve seen in the wild? Send it and I
-          can add it to the Debug Your Science collection.
-        </p>
-
-        <div className="mt-4 flex flex-wrap gap-3">
-          <a
-            href={submitMailto}
-            className="inline-flex h-10 items-center rounded-md border border-sky-300/70 bg-white/70 px-4 text-sm font-semibold text-slate-900 hover:bg-white hover:shadow-sm dark:border-sky-800/60 dark:bg-slate-950/30 dark:text-slate-100 dark:hover:bg-slate-900/40"
-          >
-            Submit a pitfall via email
-          </a>
-
-          <a
-            href="https://github.com/dipankatanu"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-10 items-center rounded-md border border-neutral-200 bg-white/60 px-4 text-sm font-semibold text-slate-800 hover:bg-white dark:border-neutral-800 dark:bg-neutral-950/30 dark:text-slate-100 dark:hover:bg-neutral-900/40"
-          >
-            Or open a GitHub issue
-          </a>
+            <ButtonLink
+              href="https://github.com/dipankatanu"
+              variant="outline"
+              external
+            >
+              Open a GitHub issue
+            </ButtonLink>
+          </div>
         </div>
 
-        <p className="mt-4 text-xs text-slate-600 dark:text-slate-300">
+        <p className="mt-3 text-xs text-slate-600 dark:text-slate-300">
           Tip: include a short example (code snippet or plot) and what the
           correct fix looks like.
         </p>
-      </ContactCard>
+      </section>
 
-      {/* Debug Your Science section */}
-      <DebugYourScience />
+      {/* DEBUG YOUR SCIENCE (no outer boxed wrapper here) */}
+      <section className="space-y-4">
+        <div className="space-y-1">
+          <h2 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-white">
+            Debug Your Science
+          </h2>
+          <p className="text-sm text-slate-700 dark:text-slate-200">
+            Common pitfalls that turn good data into bad conclusions. Click any
+            card to reveal the fix.
+          </p>
+        </div>
+
+        <DebugYourScience />
+      </section>
+
+      <footer className="border-t border-neutral-200 pt-6 text-xs text-slate-600 dark:border-neutral-800 dark:text-slate-300">
+        © {new Date().getFullYear()} Dipanka Tanu Sarmah
+      </footer>
     </div>
   );
 }
