@@ -8,6 +8,7 @@ export type Card = {
   fix: string;
   tag: string;
 };
+export type SciencePitfall = Card;
 
 export const SCIENCE_PITFALLS: Card[] = [
   // --- ORIGINAL 8 ---
