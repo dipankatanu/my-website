@@ -16,13 +16,7 @@ function Pill({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Card({
-  title,
-  text,
-}: {
-  title: string;
-  text: string;
-}) {
+function Card({ title, text }: { title: string; text: string }) {
   return (
     <div className="rounded-2xl bg-slate-50/70 p-6 transition hover:bg-slate-50 dark:bg-white/5 dark:hover:bg-white/10">
       <h3 className="text-sm font-semibold tracking-tight text-slate-900 dark:text-white">
@@ -35,25 +29,6 @@ function Card({
   );
 }
 
-function MiniRow({
-  left,
-  right,
-}: {
-  left: string;
-  right: string;
-}) {
-  return (
-    <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-      <div className="text-sm font-semibold text-slate-900 dark:text-white">
-        {left}
-      </div>
-      <div className="text-sm text-slate-600 dark:text-slate-300">
-        {right}
-      </div>
-    </div>
-  );
-}
-
 export default function AboutPage() {
   return (
     <div className="container-lab space-y-12 py-8">
@@ -62,9 +37,10 @@ export default function AboutPage() {
         subtitle="Computational biology, multi-omics systems biology, and network-centric modeling."
       />
 
-      {/* Intro band (more than plain paragraphs, still academic) */}
+      {/* Intro band */}
       <section className="rounded-3xl bg-slate-50/70 p-8 dark:bg-white/5">
         <div className="grid gap-8 md:grid-cols-3">
+          {/* Left: narrative */}
           <div className="md:col-span-2 space-y-4">
             <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-200">
               I’m a computational biologist working at the intersection of{" "}
@@ -79,8 +55,9 @@ export default function AboutPage() {
               <span className="font-semibold text-slate-900 dark:text-white">
                 network-centric modeling
               </span>
-              . My goal is to extract mechanistic insight from complex biological
-              data using principled computational and mathematical approaches.
+              . My goal is to extract mechanistic insight from complex
+              biological data using principled computational and mathematical
+              approaches.
             </p>
 
             <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-200">
@@ -93,8 +70,7 @@ export default function AboutPage() {
             <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-200">
               In parallel, I build reproducible pipelines and open-source tools
               for large-scale analysis, network prioritization, and interpretable
-              machine learning—because results should be transparent and
-              repeatable.
+              machine learning—because results should be transparent and repeatable.
             </p>
 
             <div className="flex flex-wrap gap-2 pt-2">
@@ -106,17 +82,67 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Right column: quick facts */}
+          {/* Right: Snapshot grid + CTA */}
           <div className="space-y-4">
-            <div className="rounded-2xl bg-white/70 p-5 dark:bg-slate-950/30">
-              <div className="text-xs font-semibold text-slate-500 dark:text-slate-300">
-                Snapshot
+            {/* Snapshot (colored glass grid) */}
+            <div className="rounded-3xl border border-sky-200/60 bg-white/40 p-5 backdrop-blur-md dark:border-sky-900/40 dark:bg-slate-950/25">
+              <div className="flex items-center justify-between">
+                <div className="text-xs font-semibold text-slate-600 dark:text-slate-300">
+                  Snapshot
+                </div>
+                <span className="text-[11px] text-slate-500 dark:text-slate-400">
+                  at a glance
+                </span>
               </div>
-              <div className="mt-3 space-y-3">
-                <MiniRow left="Focus" right="Systems biology & multi-omics" />
-                <MiniRow left="Methods" right="Networks, modeling, ML" />
-                <MiniRow left="Principles" right="Reproducibility & rigor" />
-                <MiniRow left="Open to" right="Collaboration & consulting" />
+
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-2xl border border-emerald-200/60 bg-gradient-to-b from-emerald-50/90 to-white/60 p-4 dark:border-emerald-900/50 dark:from-emerald-950/35 dark:to-slate-950/20">
+                  <div className="text-[11px] font-semibold text-emerald-800 dark:text-emerald-200">
+                    Focus
+                  </div>
+                  <div className="mt-1 text-sm font-semibold text-slate-900 dark:text-white">
+                    Systems biology
+                  </div>
+                  <div className="mt-1 text-xs text-slate-700 dark:text-slate-200">
+                    Multi-omics integration
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-sky-200/60 bg-gradient-to-b from-sky-50/90 to-white/60 p-4 dark:border-sky-900/50 dark:from-sky-950/35 dark:to-slate-950/20">
+                  <div className="text-[11px] font-semibold text-sky-800 dark:text-sky-200">
+                    Methods
+                  </div>
+                  <div className="mt-1 text-sm font-semibold text-slate-900 dark:text-white">
+                    Networks & modeling
+                  </div>
+                  <div className="mt-1 text-xs text-slate-700 dark:text-slate-200">
+                    ML with interpretability
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-violet-200/60 bg-gradient-to-b from-violet-50/90 to-white/60 p-4 dark:border-violet-900/50 dark:from-violet-950/35 dark:to-slate-950/20">
+                  <div className="text-[11px] font-semibold text-violet-800 dark:text-violet-200">
+                    Principles
+                  </div>
+                  <div className="mt-1 text-sm font-semibold text-slate-900 dark:text-white">
+                    Reproducibility
+                  </div>
+                  <div className="mt-1 text-xs text-slate-700 dark:text-slate-200">
+                    Transparency & rigor
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-amber-200/60 bg-gradient-to-b from-amber-50/90 to-white/60 p-4 dark:border-amber-900/50 dark:from-amber-950/35 dark:to-slate-950/20">
+                  <div className="text-[11px] font-semibold text-amber-900 dark:text-amber-200">
+                    Open to
+                  </div>
+                  <div className="mt-1 text-sm font-semibold text-slate-900 dark:text-white">
+                    Collaboration
+                  </div>
+                  <div className="mt-1 text-xs text-slate-700 dark:text-slate-200">
+                    Consulting / advising
+                  </div>
+                </div>
               </div>
 
               <div className="mt-5 flex flex-wrap gap-3">
@@ -135,7 +161,8 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white/60 p-5 text-sm text-slate-700 dark:border-slate-800 dark:bg-slate-950/30 dark:text-slate-200">
+            {/* Matching callout */}
+            <div className="rounded-3xl border border-slate-200 bg-white/60 p-5 text-sm text-slate-700 dark:border-slate-800 dark:bg-slate-950/25 dark:text-slate-200">
               If you’d like to discuss a dataset, a pipeline, or a collaboration,
               the fastest way is via the{" "}
               <Link
@@ -228,7 +255,7 @@ export default function AboutPage() {
 
       <div className="hairline" />
 
-      {/* What I build / contributions */}
+      {/* What I build */}
       <section className="space-y-6">
         <div>
           <h2 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-2xl">
