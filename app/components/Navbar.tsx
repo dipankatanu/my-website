@@ -22,12 +22,8 @@ export default function Navbar() {
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
-  // Close menu on route change
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+  useEffect(() => setOpen(false), [pathname]);
 
-  // Close menu on Escape
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -38,10 +34,11 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50">
-      <div className="border-b border-neutral-200/70 bg-white/70 backdrop-blur-md dark:border-neutral-800/70 dark:bg-neutral-950/50">
-        <nav className="mx-auto max-w-5xl px-6">
+      {/* Light, text-first bar */}
+      <div className="border-b border-neutral-200/70 bg-white/75 backdrop-blur-md dark:border-neutral-800/70 dark:bg-neutral-950/55">
+        <nav className="container-lab">
           <div className="flex items-center justify-between py-3">
-            {/* Left: Brand + desktop links */}
+            {/* Brand */}
             <div className="flex items-center gap-6">
               <Link
                 href="/"
@@ -50,8 +47,8 @@ export default function Navbar() {
                 Dipanka Tanu Sarmah
               </Link>
 
-              {/* Desktop links */}
-              <div className="hidden md:flex items-center gap-1">
+              {/* Desktop links (text only) */}
+              <div className="hidden md:flex items-center gap-5">
                 {navItems.map((item) => {
                   const active = isActive(item.href);
                   return (
@@ -59,7 +56,7 @@ export default function Navbar() {
                       key={item.href}
                       href={item.href}
                       className={[
-                        "relative rounded-md px-3 py-2 text-sm font-medium transition",
+                        "relative text-sm transition",
                         active
                           ? "text-slate-900 dark:text-white"
                           : "text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white",
@@ -68,10 +65,8 @@ export default function Navbar() {
                       {item.label}
                       <span
                         className={[
-                          "absolute left-2 right-2 -bottom-[2px] h-[2px] rounded-full transition-opacity",
-                          active
-                            ? "bg-sky-500 opacity-100"
-                            : "bg-transparent opacity-0",
+                          "absolute left-0 right-0 -bottom-1 h-[2px] rounded-full transition-opacity",
+                          active ? "bg-sky-500/80 opacity-100" : "opacity-0",
                         ].join(" ")}
                       />
                     </Link>
@@ -80,31 +75,32 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Right: actions + mobile toggle */}
+            {/* Right actions */}
             <div className="flex items-center gap-3">
+              {/* CV as a quiet text link */}
               <a
                 href="/cv.pdf"
-                className="hidden sm:inline-flex h-10 items-center rounded-md border border-sky-300/70 bg-white/70 px-4 text-sm font-semibold text-slate-900 hover:bg-white hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-400/60 dark:border-sky-800/60 dark:bg-slate-950/30 dark:text-slate-100 dark:hover:bg-slate-900/40"
+                className="hidden sm:inline-flex items-center text-sm font-semibold text-slate-900 hover:text-slate-700 dark:text-slate-100 dark:hover:text-white"
               >
                 CV
               </a>
 
-              <div className="h-10 flex items-center">
+              {/* Theme toggle (keep your component) */}
+              <div className="flex items-center">
                 <ThemeToggle />
               </div>
 
-              {/* Mobile hamburger button */}
+              {/* Mobile menu button */}
               <button
                 type="button"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-neutral-200 bg-white/70 text-slate-900 hover:bg-white hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-400/60 dark:border-neutral-800 dark:bg-neutral-950/40 dark:text-slate-100 dark:hover:bg-neutral-900 md:hidden"
+                className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-200 bg-white/70 text-slate-900 hover:bg-white dark:border-neutral-800 dark:bg-neutral-950/40 dark:text-slate-100 dark:hover:bg-neutral-900"
                 aria-label="Open menu"
                 aria-expanded={open}
                 onClick={() => setOpen((v) => !v)}
               >
-                {/* simple hamburger icon */}
                 <span className="block h-[2px] w-5 bg-current" />
-                <span className="block h-[2px] w-5 bg-current mt-1.5" />
-                <span className="block h-[2px] w-5 bg-current mt-1.5" />
+                <span className="mt-1.5 block h-[2px] w-5 bg-current" />
+                <span className="mt-1.5 block h-[2px] w-5 bg-current" />
               </button>
             </div>
           </div>
@@ -112,7 +108,11 @@ export default function Navbar() {
           {/* Mobile dropdown */}
           {open ? (
             <div className="md:hidden pb-4">
-              <div className="rounded-xl border border-neutral-200 bg-white/80 p-2 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/60">
+              <div className="rounded-2xl border border-neutral-200 bg-white/85 p-2 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/65">
+                <div className="px-2 py-1 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                  Menu
+                </div>
+
                 {navItems.map((item) => {
                   const active = isActive(item.href);
                   return (
@@ -120,10 +120,10 @@ export default function Navbar() {
                       key={item.href}
                       href={item.href}
                       className={[
-                        "block rounded-lg px-3 py-2 text-sm font-medium transition",
+                        "block rounded-xl px-3 py-2 text-sm transition",
                         active
                           ? "bg-sky-50 text-slate-900 dark:bg-sky-950/40 dark:text-white"
-                          : "text-slate-700 hover:bg-neutral-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-neutral-900 dark:hover:text-white",
+                          : "text-slate-700 hover:bg-neutral-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-neutral-900/50 dark:hover:text-white",
                       ].join(" ")}
                     >
                       {item.label}
@@ -133,7 +133,7 @@ export default function Navbar() {
 
                 <a
                   href="/cv.pdf"
-                  className="mt-2 block rounded-lg border border-sky-300/60 bg-white/70 px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-white dark:border-sky-800/60 dark:bg-neutral-950/40 dark:text-slate-100 dark:hover:bg-neutral-900"
+                  className="mt-2 block rounded-xl px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-neutral-50 dark:text-slate-100 dark:hover:bg-neutral-900/50"
                 >
                   Download CV
                 </a>

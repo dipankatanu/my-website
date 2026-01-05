@@ -1,14 +1,71 @@
 @import "tailwindcss";
 
-/* Base polish */
-:root { color-scheme: light; }
-html.dark { color-scheme: dark; }
+/* ------------------------------------------------------------
+   Modern lab base (clean, airy, academic)
+------------------------------------------------------------ */
 
+/* Respect theme for form controls, scrollbars, etc. */
+:root {
+  color-scheme: light;
+  --page-max: 72rem; /* ~1152px */
+  --hairline-light: rgba(0, 0, 0, 0.08);
+  --hairline-dark: rgba(255, 255, 255, 0.12);
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Smooth typography */
 body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Modern lab defaults (subtle) */
+  text-rendering: optimizeLegibility;
+  line-height: 1.6;
 }
+
+/* ------------------------------------------------------------
+   Layout utilities (use these in pages/components)
+------------------------------------------------------------ */
+
+/* consistent page width */
+.container-lab {
+  max-width: var(--page-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* subtle section divider instead of boxes */
+.hairline {
+  border-top: 1px solid var(--hairline-light);
+}
+html.dark .hairline {
+  border-top: 1px solid var(--hairline-dark);
+}
+
+/* optional: readable long text blocks */
+.prose-lab {
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
+/* ------------------------------------------------------------
+   Focus styles (calm, accessible)
+------------------------------------------------------------ */
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.55); /* blue-500-ish */
+  outline-offset: 2px;
+  border-radius: 0.6rem;
+}
+
+/* ------------------------------------------------------------
+   Page transition (keep)
+------------------------------------------------------------ */
 .page-transition {
   animation: pageFade 180ms ease-out;
 }
