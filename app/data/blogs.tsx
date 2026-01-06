@@ -39,4 +39,13 @@ export const blogPdfs: BlogPdf[] = [
     description:
       "A concise review of recently approved lung cancer drugs, their molecular targets, and mechanisms.",
   },
+  {
+  slug: "scale-free-networks-in-biology",
+  title: "Scale-Free Networks in Biology: Power, Pitfalls, and the Seduction of Universality",
+  date: "2026-01-05",
+  file: "/blogs/Scale_Free_Networks_in_Biology.pdf",
+  description:
+    "A critical essay on scale-free networks in biology, examining why the concept became dominant, where it provides insight, and where it can mislead biological interpretation.",
+},
+
 ];
