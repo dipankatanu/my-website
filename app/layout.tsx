@@ -47,17 +47,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers>
           <Navbar />
-          <main className="max-w-4xl mx-auto px-6 py-10">
-  <RouteTransition>{children}</RouteTransition>
-</main>
 
-          <footer className="max-w-4xl mx-auto px-6 py-10 text-sm text-gray-500 dark:text-gray-400">
-  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-    <span>© {new Date().getFullYear()} Dipanka Tanu Sarmah</span>
-    <VisitorCount />
-  </div>
-</footer>
+          {/* Page content */}
+          <main className="container-lab py-10">
+            <RouteTransition>{children}</RouteTransition>
+          </main>
 
+          {/* Footer */}
+          <footer className="container-lab py-10 text-sm text-slate-500 dark:text-slate-400">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <span>© {new Date().getFullYear()} Dipanka Tanu Sarmah</span>
+              <VisitorCount />
+            </div>
+          </footer>
         </Providers>
       </body>
     </html>

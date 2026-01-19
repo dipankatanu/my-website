@@ -47,5 +47,14 @@ export const blogPdfs: BlogPdf[] = [
   description:
     "A critical essay on scale-free networks in biology, examining why the concept became dominant, where it provides insight, and where it can mislead biological interpretation.",
 },
+{
+  slug: "nsg-proximity-graphs-biology",
+  title: "Navigating Spreading-out Graphs: Efficient Search in Biological Networks",
+  date: "2026-01-19",
+  file: "/NSG.pdf",
+  description:
+    "A deep dive into the NSG paper, exploring how l2 norm proximity graphs and out-degree reduction enable fast complex detection and drug-response mapping in LINCS L1000.",
+  tags: ["Graph Theory", "PPI Networks", "LINCS L1000", "Bioinformatics"]
+  },
 
 ];
