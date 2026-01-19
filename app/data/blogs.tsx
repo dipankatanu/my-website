@@ -51,8 +51,15 @@ export const blogPdfs: BlogPdf[] = [
   slug: "nsg-proximity-graphs-biology",
   title: "Navigating Spreading-out Graphs: Efficient Search in Biological Networks",
   date: "2026-01-19",
-  file: "/NSG.pdf",
+  file: "/nsg-proximity-graphs-biology.pdf",
   description:
     "A deep dive into the NSG paper, exploring how l2 norm proximity graphs and out-degree reduction enable fast complex detection and drug-response mapping in LINCS L1000.",
   },
+  {
+  slug: "geometry-of-interaction-proximity-graphs",
+  title: "The Geometry of Interaction: Proximity Graphs in Modern Network Biology",
+  date: "2026-01-20",
+  file: "/blogs/Proximity_Graphs_Theory.pdf", 
+  description: "An expert-level exploration of how k-NN, RNG, and NSG frameworks transform topological 'hairballs' into precise geometric manifolds for drug discovery and spatial transcriptomics."
+},
 ];
