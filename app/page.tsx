@@ -187,8 +187,8 @@ export default function Home() {
               key={item.title}
               className="card group"
             >
-              {/* Icon */}
-              <div className="mb-4 text-4xl transition-transform duration-200 group-hover:scale-110">
+              {/* Icon - optimized size and opacity for light mode */}
+              <div className="mb-4 text-3xl opacity-90 transition-all duration-200 group-hover:scale-110 group-hover:opacity-100 dark:opacity-100">
                 {item.icon}
               </div>
               
