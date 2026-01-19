@@ -56,5 +56,4 @@ export const blogPdfs: BlogPdf[] = [
     "A deep dive into the NSG paper, exploring how l2 norm proximity graphs and out-degree reduction enable fast complex detection and drug-response mapping in LINCS L1000.",
   tags: ["Graph Theory", "PPI Networks", "LINCS L1000", "Bioinformatics"]
   },
-
 ];
