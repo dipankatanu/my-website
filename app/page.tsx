@@ -9,22 +9,38 @@ export const metadata: Metadata = {
     "Personal website of Dipanka Tanu Sarmah — computational biology, multi-omics, networks, and ML.",
 };
 
+/* ============================================================
+   REUSABLE COMPONENTS
+   ============================================================ */
+
+/**
+ * Tag component for project categories
+ * Small, subtle badges with light background
+ */
 function Tag({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-sky-200/60 bg-white/40 px-2.5 py-1 text-xs text-slate-700 backdrop-blur dark:border-sky-900/50 dark:bg-slate-950/25 dark:text-slate-200">
+    <span className="tag">
       {label}
     </span>
   );
 }
 
+/**
+ * Pill component for metadata/status indicators
+ * Slightly larger than tags, used for hero section info
+ */
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="rounded-full border border-sky-200/60 bg-white/45 px-3 py-1 text-xs text-slate-700 backdrop-blur dark:border-sky-900/40 dark:bg-slate-950/25 dark:text-slate-200">
+    <span className="pill">
       {children}
     </span>
   );
 }
 
+/**
+ * Section title with optional subtitle and right-aligned action
+ * Provides consistent heading hierarchy across sections
+ */
 function SectionTitle({
   title,
   subtitle,
@@ -35,158 +51,233 @@ function SectionTitle({
   right?: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-wrap items-end justify-between gap-3">
-      <div>
-        <h2 className="text-2xl font-bold tracking-tight text-[color:var(--text-strong)] sm:text-3xl">
+    <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div className="flex-1">
+        <h2 className="text-3xl font-bold tracking-tight text-[color:var(--text-strong)] sm:text-4xl">
           {title}
         </h2>
-        {subtitle ? (
-          <p className="mt-2 max-w-2xl text-base text-[color:var(--text)]">
+        {subtitle && (
+          <p className="mt-3 max-w-2xl text-base leading-relaxed text-[color:var(--text-muted)] sm:text-lg">
             {subtitle}
           </p>
-        ) : null}
+        )}
       </div>
-      {right ? <div>{right}</div> : null}
+      {right && <div className="flex-shrink-0">{right}</div>}
     </div>
   );
 }
 
+/* ============================================================
+   MAIN HOME PAGE COMPONENT
+   ============================================================ */
+
 export default function Home() {
+  // Get first 3 projects for featured section
   const featured = projects.slice(0, 3);
 
   return (
-    <div className="container-lab space-y-14 py-10">
-      {/* HERO */}
-      <section className="relative overflow-hidden rounded-3xl border border-sky-200/50 bg-white/40 p-8 backdrop-blur-md dark:border-sky-900/35 dark:bg-slate-950/20 sm:p-12">
-        <NetworkBackground opacity={0.8} />
+    <div className="space-y-20 py-8 sm:py-12">
+      
+      {/* ========================================
+          HERO SECTION
+          Large, eye-catching introduction with animated background
+          ======================================== */}
+      <section className="relative overflow-hidden rounded-3xl border border-[color:var(--border-light)] bg-white/60 p-8 shadow-sm backdrop-blur-sm dark:bg-slate-950/40 sm:p-12 lg:p-16">
+        
+        {/* Animated network background */}
+        <NetworkBackground opacity={0.65} />
 
-        {/* Soft blue wash */}
+        {/* Gradient overlay for depth and readability */}
         <div
-          className="
-            pointer-events-none absolute inset-0
-            bg-gradient-to-b
-            from-sky-50/90 via-sky-200/55 to-sky-50/92
-            dark:from-slate-950/88 dark:via-sky-950/55 dark:to-slate-950/92
-          "
+          className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-50/95 via-white/90 to-blue-50/95 dark:from-slate-950/95 dark:via-slate-900/90 dark:to-sky-950/95"
+          aria-hidden="true"
         />
 
-        {/* Subtle vignette */}
-        <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_140px_rgba(2,6,23,0.07)] dark:shadow-[inset_0_0_180px_rgba(0,0,0,0.45)]" />
+        {/* Subtle vignette effect */}
+        <div 
+          className="pointer-events-none absolute inset-0 shadow-[inset_0_0_160px_rgba(2,6,23,0.06)] dark:shadow-[inset_0_0_200px_rgba(0,0,0,0.5)]"
+          aria-hidden="true"
+        />
 
-        <div className="relative z-10 max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--text-muted)]">
+        {/* Main content */}
+        <div className="relative z-10 max-w-4xl">
+          
+          {/* Eyebrow text - small caps descriptor */}
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[color:var(--text-muted)]">
             Computational Biology • Multi-omics • Network Biology • ML
           </p>
 
-          <h1 className="mt-4 text-5xl font-bold tracking-tight text-[color:var(--text-strong)] sm:text-6xl">
-            Hi, I’m Dipanka
+          {/* Main headline */}
+          <h1 className="mt-5 text-5xl font-extrabold leading-[1.1] tracking-tight text-[color:var(--text-strong)] sm:text-6xl lg:text-7xl">
+            Hi, I'm Dipanka
           </h1>
 
-          <p className="mt-4 text-base leading-relaxed text-[color:var(--text)] sm:text-lg">
+          {/* Subheading / value proposition */}
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[color:var(--text)] sm:text-xl">
             I work on multi-omics systems biology, network-centric target
             discovery, and reproducible computational methods across
             neurodegeneration and cancer.
           </p>
 
-          {/* CTAs (token buttons fix dark/light issues) */}
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href="/cv.pdf" className="btn-primary">
+          {/* Call-to-action buttons */}
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <a 
+              href="/cv.pdf" 
+              className="btn-primary"
+              aria-label="Download my curriculum vitae"
+            >
               Download CV
             </a>
-            <Link href="/projects" className="btn-secondary">
+            <Link 
+              href="/projects" 
+              className="btn-secondary"
+            >
               View projects
             </Link>
-            <Link href="/publications" className="btn-link">
-              Publications
+            <Link 
+              href="/publications" 
+              className="btn-link"
+            >
+              Publications →
             </Link>
           </div>
 
-          <div className="mt-7 flex flex-wrap gap-2">
-            <Pill>Based in Ireland</Pill>
-            <Pill>Open to collaborations</Pill>
-            <Pill>Reproducible research</Pill>
+          {/* Info pills - location, availability, etc. */}
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Pill>📍 Based in Ireland</Pill>
+            <Pill>🤝 Open to collaborations</Pill>
+            <Pill>🔬 Reproducible research</Pill>
           </div>
         </div>
       </section>
 
-      <div className="divider-strong" />
+      {/* Decorative divider with center dot */}
+      <div className="divider-decorative" aria-hidden="true" />
 
-      {/* WHAT I DO */}
-      <section className="space-y-6">
+      {/* ========================================
+          WHAT I DO SECTION
+          Core competencies and research areas
+          ======================================== */}
+      <section className="space-y-8">
         <SectionTitle
           title="What I do"
           subtitle="Core areas I work on and the kinds of problems I like solving."
         />
 
-        <div className="grid gap-6 md:grid-cols-3">
+        {/* Competency cards grid */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
+              icon: "🧬",
               title: "Multi-omics analysis",
-              text:
-                "Integration and interpretation across transcriptomics, proteomics, phosphoproteomics, metabolomics, and single-cell data.",
+              text: "Integration and interpretation across transcriptomics, proteomics, phosphoproteomics, metabolomics, and single-cell data.",
             },
             {
+              icon: "🕸️",
               title: "Network biology",
-              text:
-                "PPI and regulatory networks for target discovery, centrality-based prioritization, and pathway-level insights.",
+              text: "PPI and regulatory networks for target discovery, centrality-based prioritization, and pathway-level insights.",
             },
             {
+              icon: "🤖",
               title: "Modeling & ML",
-              text:
-                "Mathematical models and machine learning for prediction, mechanism exploration, and robust validation.",
+              text: "Mathematical models and machine learning for prediction, mechanism exploration, and robust validation.",
             },
-          ].map((x) => (
+          ].map((item) => (
             <div
-              key={x.title}
-              className="rounded-2xl bg-slate-50/70 p-6 transition hover:bg-slate-50 dark:bg-white/5 dark:hover:bg-white/10"
+              key={item.title}
+              className="card group"
             >
-              <h3 className="text-sm font-semibold tracking-tight text-[color:var(--text-strong)]">
-                {x.title}
+              {/* Icon */}
+              <div className="mb-4 text-4xl transition-transform duration-200 group-hover:scale-110">
+                {item.icon}
+              </div>
+              
+              {/* Title */}
+              <h3 className="text-lg font-bold tracking-tight text-[color:var(--text-strong)]">
+                {item.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[color:var(--text)]">
-                {x.text}
+              
+              {/* Description */}
+              <p className="mt-3 text-sm leading-relaxed text-[color:var(--text)]">
+                {item.text}
               </p>
             </div>
           ))}
         </div>
       </section>
 
-      <div className="divider-strong" />
+      {/* Decorative divider */}
+      <div className="divider-decorative" aria-hidden="true" />
 
-      {/* FEATURED PROJECTS */}
-      <section className="space-y-6">
+      {/* ========================================
+          FEATURED PROJECTS SECTION
+          Showcase of top 3 projects
+          ======================================== */}
+      <section className="space-y-8">
         <SectionTitle
           title="Featured projects"
           subtitle="A few highlighted projects. See the Projects page for the full list."
           right={
-            <Link href="/projects" className="btn-link">
+            <Link 
+              href="/projects" 
+              className="btn-link"
+            >
               View all →
             </Link>
           }
         />
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {featured.map((p) => {
-            const external = p.href.startsWith("http");
+        {/* Project cards grid */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((project) => {
+            const isExternal = project.href.startsWith("http");
+            
             return (
               <a
-                key={p.title}
-                href={p.href}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noopener noreferrer" : undefined}
-                className="group rounded-2xl bg-slate-50/70 p-6 transition hover:bg-slate-50 dark:bg-white/5 dark:hover:bg-white/10"
+                key={project.title}
+                href={project.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+                className="card-interactive group"
+                aria-label={`View project: ${project.title}`}
               >
-                <h3 className="text-sm font-semibold tracking-tight text-[color:var(--text-strong)] group-hover:underline">
-                  {p.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[color:var(--text)]">
-                  {p.description}
+                {/* Project title with external link indicator */}
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="flex-1 text-lg font-bold tracking-tight text-[color:var(--text-strong)] transition-colors group-hover:text-[color:var(--accent)]">
+                    {project.title}
+                  </h3>
+                  
+                  {/* External link icon */}
+                  {isExternal && (
+                    <svg 
+                      className="h-4 w-4 flex-shrink-0 text-[color:var(--text-muted)] transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[color:var(--accent)]" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  )}
+                </div>
+
+                {/* Project description */}
+                <p className="mt-3 text-sm leading-relaxed text-[color:var(--text)]">
+                  {project.description}
                 </p>
 
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {p.tags.slice(0, 3).map((t) => (
-                    <Tag key={t} label={t} />
+                {/* Technology tags */}
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.tags.slice(0, 3).map((tag) => (
+                    <Tag key={tag} label={tag} />
                   ))}
+                  
+                  {/* Show "+N more" if there are additional tags */}
+                  {project.tags.length > 3 && (
+                    <span className="text-xs text-[color:var(--text-muted)]">
+                      +{project.tags.length - 3} more
+                    </span>
+                  )}
                 </div>
               </a>
             );
@@ -194,20 +285,38 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="divider-strong" />
+      {/* Decorative divider */}
+      <div className="divider-decorative" aria-hidden="true" />
 
-      {/* PUBLICATIONS */}
-      <section className="rounded-3xl bg-slate-50/70 p-8 dark:bg-white/5">
-        <SectionTitle
-          title="Publications"
-          subtitle="Auto-synced from ORCID. Full list, filters, and external links are available."
-          right={
-            <Link href="/publications" className="btn-secondary">
+      {/* ========================================
+          PUBLICATIONS TEASER SECTION
+          Call-to-action for publications page
+          ======================================== */}
+      <section className="overflow-hidden rounded-3xl border border-[color:var(--border-light)] bg-gradient-to-br from-slate-50/90 to-blue-50/60 p-8 shadow-sm dark:from-slate-900/50 dark:to-sky-950/30 sm:p-12">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          
+          {/* Left side - Title and description */}
+          <div className="flex-1">
+            <h2 className="text-3xl font-bold tracking-tight text-[color:var(--text-strong)] sm:text-4xl">
+              Publications
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[color:var(--text-muted)] sm:text-lg">
+              Auto-synced from ORCID. Full list, filters, and external links are available on the dedicated page.
+            </p>
+          </div>
+
+          {/* Right side - CTA button */}
+          <div className="flex-shrink-0">
+            <Link 
+              href="/publications" 
+              className="btn-primary"
+            >
               View publications
             </Link>
-          }
-        />
+          </div>
+        </div>
       </section>
+
     </div>
   );
 }

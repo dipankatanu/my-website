@@ -1,0 +1,256 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------
+   Modern lab base (clean, airy, academic) — upgraded typography
+------------------------------------------------------------ */
+
+/* Respect theme for form controls, scrollbars, etc. */
+:root {
+  color-scheme: light;
+
+  /* Wider content for bold headings (portfolio feel) */
+  --page-max: 80rem; /* 1280px */
+
+  --hairline-light: rgba(0, 0, 0, 0.08);
+  --hairline-dark: rgba(255, 255, 255, 0.12);
+}
+:root {
+  color-scheme: light;
+
+  --page-max: 80rem;
+
+  /* Theme tokens */
+  --bg: #ffffff;
+  --text-strong: #0f172a; /* slate-900 */
+  --text: #334155; /* slate-700 */
+  --text-muted: #64748b; /* slate-500 */
+
+  --hairline-light: rgba(0, 0, 0, 0.10);
+  --hairline-dark: rgba(255, 255, 255, 0.16);
+
+  /* Buttons */
+  --btn-primary-bg: #0f172a;
+  --btn-primary-fg: #ffffff;
+
+  --btn-secondary-bg: rgba(15, 23, 42, 0.06);
+  --btn-secondary-fg: #0f172a;
+  --btn-secondary-border: rgba(15, 23, 42, 0.18);
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --bg: #020617; /* slate-950 */
+  --text-strong: #f8fafc; /* slate-50 */
+  --text: #e2e8f0; /* slate-200 */
+  --text-muted: #94a3b8; /* slate-400 */
+
+  /* Buttons invert nicely in dark */
+  --btn-primary-bg: #ffffff;
+  --btn-primary-fg: #0f172a;
+
+  --btn-secondary-bg: rgba(255, 255, 255, 0.08);
+  --btn-secondary-fg: #f8fafc;
+  --btn-secondary-border: rgba(255, 255, 255, 0.18);
+}
+
+/* Base */
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  line-height: 1.65;
+
+  background: var(--bg);
+  color: var(--text-strong);
+}
+
+/* Stronger dividers */
+.divider-strong {
+  border-top: 1px solid var(--hairline-light);
+}
+html.dark .divider-strong {
+  border-top: 1px solid var(--hairline-dark);
+}
+
+/* Better justified text */
+.hyphens-auto {
+  hyphens: auto;
+}
+
+/* Button utilities (do not depend on tailwind dark:) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem; /* px-5 py-2.5 */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 600;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-fg);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  transition: background 150ms ease, transform 150ms ease;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-fg);
+  border: 1px solid var(--btn-secondary-border);
+  transition: background 150ms ease, transform 150ms ease;
+}
+.btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.btn-link:hover {
+  color: var(--text-strong);
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Smooth typography + consistent base colors */
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  text-rendering: optimizeLegibility;
+
+  /* Better default rhythm */
+  line-height: 1.65;
+
+  /* IMPORTANT: consistent base palette */
+  background: #ffffff;
+  color: #0f172a; /* slate-900 */
+}
+
+html.dark body {
+  background: #020617; /* slate-950 */
+  color: #f8fafc; /* slate-50 */
+}
+
+/* Make links feel intentional (not default browser blue) */
+a {
+  color: inherit;
+  text-decoration-color: rgba(15, 23, 42, 0.25);
+  text-underline-offset: 4px;
+}
+a:hover {
+  text-decoration-color: rgba(15, 23, 42, 0.5);
+}
+html.dark a {
+  text-decoration-color: rgba(248, 250, 252, 0.25);
+}
+html.dark a:hover {
+  text-decoration-color: rgba(248, 250, 252, 0.45);
+}
+
+/* ------------------------------------------------------------
+   Layout utilities (use these in pages/components)
+------------------------------------------------------------ */
+
+/* consistent page width */
+.container-lab {
+  max-width: var(--page-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* add breathing room on large screens */
+@media (min-width: 1024px) {
+  .container-lab {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* subtle section divider instead of boxes */
+.hairline {
+  border-top: 1px solid var(--hairline-light);
+}
+html.dark .hairline {
+  border-top: 1px solid var(--hairline-dark);
+}
+
+/* optional: readable long text blocks */
+.prose-lab {
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+/* Headings helper (use if you want consistent big sections) */
+.h2-lab {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 1.75rem; /* ~text-2xl */
+  line-height: 1.15;
+}
+@media (min-width: 640px) {
+  .h2-lab {
+    font-size: 2.25rem; /* ~text-4xl */
+  }
+}
+
+/* ------------------------------------------------------------
+   Focus styles (calm, accessible)
+------------------------------------------------------------ */
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid rgba(59, 130, 246, 0.55); /* blue-500-ish */
+  outline-offset: 2px;
+  border-radius: 0.6rem;
+}
+
+/* ------------------------------------------------------------
+   Page transition (keep)
+------------------------------------------------------------ */
+.page-transition {
+  animation: pageFade 180ms ease-out;
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Stronger section divider (more visible than hairline) */
+.divider-strong {
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
+}
+html.dark .divider-strong {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Better justified text (avoid rivers) */
+.hyphens-auto {
+  hyphens: auto;
+}
