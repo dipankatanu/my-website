@@ -62,4 +62,12 @@ export const blogPdfs: BlogPdf[] = [
   file: "/blogs/Proximity_Graphs_Theory.pdf", 
   description: "An expert-level exploration of how k-NN, RNG, and NSG frameworks transform topological 'hairballs' into precise geometric manifolds for drug discovery and spatial transcriptomics."
 },
+{
+  slug: "information-bottleneck-of-life",
+  title: "The Information Bottleneck of Life: Geometry, Entropy, and Topology in Biological Systems",
+  date: "2026-01-19",
+  file: "/blogs/The_Information_Bottleneck_of_Life.pdf",
+  description: "A masterclass-style synthesis arguing that biological function and disease emerge from geometric constraints on information flow. Integrates spectral graph theory, curvature, entropy, graph signal processing, and persistent homology to frame life as a navigable manifold shaped by evolution and thermodynamics."
+},
+
 ];
