@@ -58,7 +58,7 @@ export const blogPdfs: BlogPdf[] = [
   {
   slug: "geometry-of-interaction-proximity-graphs",
   title: "The Geometry of Interaction: Proximity Graphs in Modern Network Biology",
-  date: "2026-01-20",
+  date: "2026-01-19",
   file: "/blogs/Proximity_Graphs_Theory.pdf", 
   description: "An expert-level exploration of how k-NN, RNG, and NSG frameworks transform topological 'hairballs' into precise geometric manifolds for drug discovery and spatial transcriptomics."
 },
