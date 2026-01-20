@@ -69,5 +69,11 @@ export const blogPdfs: BlogPdf[] = [
   file: "/blogs/The_Information_Bottleneck_of_Life.pdf",
   description: "A masterclass-style synthesis arguing that biological function and disease emerge from geometric constraints on information flow. Integrates spectral graph theory, curvature, entropy, graph signal processing, and persistent homology to frame life as a navigable manifold shaped by evolution and thermodynamics."
 },
-
+{
+  "slug": "demystifying_git",
+  "title": "Demystifying Git: The Content-Addressable Filesystem",
+  "date": "2026-01-20",
+  "file": "/blogs/Demystifying_Git.pdf",
+  "description": "A technical synthesis of Git's inner architecture, framing version control as a navigable manifold. This guide integrates the mechanics of SHA-1 hashing, directed acyclic graphs (DAG), and content-addressable storage to explain how Git manages project entropy."
+}
 ];
