@@ -75,5 +75,12 @@ export const blogPdfs: BlogPdf[] = [
   date: "2026-01-20",
   file: "/blogs/Demystifying_Git.pdf",
   description: "A technical synthesis of Git's inner architecture, framing version control as a navigable manifold. This guide integrates the mechanics of SHA-1 hashing, directed acyclic graphs (DAG), and content-addressable storage to explain how Git manages project entropy."
+},
+{
+  slug: "machine-learning-notes",
+  title: "Notes on Machine Learning: From Linear Models to Multimodal Transformers",
+  date: "2026-01-21",
+  file: "/blogs/Machine_Learning_Notes.pdf",
+  description: "Personal yet rigorous notes tracing the evolution of machine learning from linear and tree-based models to Transformers, language models, and vision–language systems. Written as a structured synthesis for learning and reflection, rather than a definitive textbook."
 }
 ];
