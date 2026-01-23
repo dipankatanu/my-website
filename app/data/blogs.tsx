@@ -82,5 +82,12 @@ export const blogPdfs: BlogPdf[] = [
   date: "2026-01-21",
   file: "/blogs/Machine_Learning_Notes.pdf",
   description: "Personal yet rigorous notes tracing the evolution of machine learning from linear and tree-based models to Transformers, language models, and vision–language systems. Written as a structured synthesis for learning and reflection, rather than a definitive textbook."
+},
+{
+  slug: "Markdown_and_LLM",
+  title: "The Structured Dialogue: How Markdown Elevates LLM Outputs",
+  date: "2026-01-21",
+  file: "/blogs/Markdown_and_LLM.pdf",
+  description: "Master the art of structured prompting by using Markdown to transform generic AI responses into precise, high-quality outputs for complex fields like bioinformatics."
 }
 ];
