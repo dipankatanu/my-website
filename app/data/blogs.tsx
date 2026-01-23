@@ -86,7 +86,7 @@ export const blogPdfs: BlogPdf[] = [
 {
   slug: "Markdown_and_LLM",
   title: "The Structured Dialogue: How Markdown Elevates LLM Outputs",
-  date: "2026-01-21",
+  date: "2026-01-23",
   file: "/blogs/Markdown_and_LLM.pdf",
   description: "Master the art of structured prompting by using Markdown to transform generic AI responses into precise, high-quality outputs for complex fields like bioinformatics."
 }
