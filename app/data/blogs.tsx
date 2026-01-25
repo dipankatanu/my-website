@@ -89,5 +89,13 @@ export const blogPdfs: BlogPdf[] = [
   date: "2026-01-23",
   file: "/blogs/Markdown_and_LLM.pdf",
   description: "Master the art of structured prompting by using Markdown to transform generic AI responses into precise, high-quality outputs for complex fields like bioinformatics."
+},
+{
+  slug: "Programming_Languages_Philosophy",
+  title: "The Soul of Code: Philosophy and Design of Programming Languages",
+  date: "2026-01-25",
+  file: "/blogs/Programming_Languages_Philosophy.pdf",
+  description: "A deep dive into the design motivations and tradeoffs behind major programming languages, highlighting how abstraction, control, and community shape modern software systems."
 }
+
 ];
