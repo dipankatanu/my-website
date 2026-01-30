@@ -97,5 +97,4 @@ export const blogPdfs: BlogPdf[] = [
   file: "/blogs/Programming_Languages_Philosophy.pdf",
   description: "A deep dive into the design motivations and tradeoffs behind major programming languages, highlighting how abstraction, control, and community shape modern software systems."
 }
-
 ];
