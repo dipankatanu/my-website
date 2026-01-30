@@ -96,5 +96,12 @@ export const blogPdfs: BlogPdf[] = [
   date: "2026-01-25",
   file: "/blogs/Programming_Languages_Philosophy.pdf",
   description: "A deep dive into the design motivations and tradeoffs behind major programming languages, highlighting how abstraction, control, and community shape modern software systems."
+},
+{
+  slug: "Normalization_Across_Omics",
+  title: "Normalization Across Omics: From RNA-seq and Proteomics to Statistical Validity",
+  date: "2026-01-30",
+  file: "/blogs/Normalization_Across_Omics.pdf",
+  description: "A detailed, concept-driven guide to normalization in RNA sequencing and proteomics, explaining FPKM, TPM, TMM, DESeq2, iBAQ, RIBAQ, and LFQ through worked examples, reviewer insights, and multi-omics integration principles."
 }
 ];
