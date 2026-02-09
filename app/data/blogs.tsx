@@ -103,5 +103,13 @@ export const blogPdfs: BlogPdf[] = [
   date: "2026-01-30",
   file: "/blogs/Normalization_Across_Omics.pdf",
   description: "A detailed, concept-driven guide to normalization in RNA sequencing and proteomics, explaining FPKM, TPM, TMM, DESeq2, iBAQ, RIBAQ, and LFQ through worked examples, reviewer insights, and multi-omics integration principles."
+},
+{
+  slug: "Metatranscriptomics_Active_Function",
+  title: "Metatranscriptomics: Listening to the Active Functional State of Microbial Communities",
+  date: "2026-02-09",
+  file: "/blogs/Metatranscriptomics_Active_Function.pdf",
+  description: "A deep computational and conceptual guide to metatranscriptomics, covering RNA capture, host removal, functional quantification, normalization, pathway interpretation, and systems-level integration. Includes practical pitfalls, expert insight boxes, and translational perspectives for disease and microbiome research."
 }
+
 ];
