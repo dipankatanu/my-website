@@ -110,6 +110,13 @@ export const blogPdfs: BlogPdf[] = [
   date: "2026-02-09",
   file: "/blogs/Metatranscriptomics_Active_Function.pdf",
   description: "A deep computational and conceptual guide to metatranscriptomics, covering RNA capture, host removal, functional quantification, normalization, pathway interpretation, and systems-level integration. Includes practical pitfalls, expert insight boxes, and translational perspectives for disease and microbiome research."
+},
+{
+  slug: "Isoform_Complexity",
+  title: "Isoform Complexity Analysis: Structural Resolution Beyond Gene-Level Expression",
+  date: "2026-03-03",
+  file: "/blogs/Isoform_Complexity.pdf",
+  description: "A concise conceptual insight into isoform complexity analysis, highlighting transcript-level resolution, alternative splicing architecture, long-read reconstruction, and the biological importance of isoform switching in disease. Emphasizes structural diversity as a functional determinant beyond aggregate gene expression."
 }
 
 ];
