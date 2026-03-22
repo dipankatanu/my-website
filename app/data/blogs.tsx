@@ -117,6 +117,12 @@ export const blogPdfs: BlogPdf[] = [
   date: "2026-03-03",
   file: "/blogs/Isoform_Complexity.pdf",
   description: "A concise conceptual insight into isoform complexity analysis, highlighting transcript-level resolution, alternative splicing architecture, long-read reconstruction, and the biological importance of isoform switching in disease. Emphasizes structural diversity as a functional determinant beyond aggregate gene expression."
+},
+{
+  slug: "Isoform_Complexity",
+  title: "Isoform Complexity Analysis: Structural Resolution Beyond Gene-Level Expression",
+  date: "2026-03-03",
+  file: "/blogs/Isoform_Complexity.pdf",
+  description: "A concise conceptual insight into isoform complexity analysis, highlighting transcript-level resolution, alternative splicing architecture, long-read reconstruction, and the biological importance of isoform switching in disease. Emphasizes structural diversity as a functional determinant beyond aggregate gene expression."
 }
-
 ];
