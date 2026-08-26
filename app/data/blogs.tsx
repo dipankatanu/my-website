@@ -119,10 +119,21 @@ export const blogPdfs: BlogPdf[] = [
   description: "A concise conceptual insight into isoform complexity analysis, highlighting transcript-level resolution, alternative splicing architecture, long-read reconstruction, and the biological importance of isoform switching in disease. Emphasizes structural diversity as a functional determinant beyond aggregate gene expression."
 },
 {
-  slug: "Isoform_Complexity",
-  title: "Isoform Complexity Analysis: Structural Resolution Beyond Gene-Level Expression",
-  date: "2026-03-03",
-  file: "/blogs/Isoform_Complexity.pdf",
-  description: "A concise conceptual insight into isoform complexity analysis, highlighting transcript-level resolution, alternative splicing architecture, long-read reconstruction, and the biological importance of isoform switching in disease. Emphasizes structural diversity as a functional determinant beyond aggregate gene expression."
+  "slug": "CELLxGENE_Overview",
+  "title": "CELLxGENE Explained: Interactive Exploration of Single-Cell Omics Data",
+  "date": "2026-03-22",
+  "file": "/blogs/CELLxGENE_Overview.pdf",
+  "description": "A concise conceptual overview of CELLxGENE, highlighting its role in interactive visualization, public single-cell dataset discovery, and metadata-driven exploration. Covers gene expression matrices, embeddings, and annotation workflows, emphasizing its importance in bridging large-scale single-cell data with biological insight and hypothesis generation."
+},
+{
+  "slug": "Clustering_Biological_Populations",
+
+  "title": "When We See Five Clusters, Are There Really Five Biological Populations?",
+
+  "date": "2026-08-26",
+
+  "file": "/blogs/Clustering_Biological_Populations.pdf",
+
+  "description": "A computational perspective on what clustering actually means in single-cell analysis. Explores how feature selection, PCA, neighborhood construction, weighted similarity graphs, Leiden or Louvain community detection, and resolution parameters shape the final clusters, and why a computational cluster should not automatically be interpreted as a distinct biological population."
 }
 ];
