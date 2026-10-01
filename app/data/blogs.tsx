@@ -135,5 +135,16 @@ export const blogPdfs: BlogPdf[] = [
   "file": "/blogs/Clustering_Biological_Populations.pdf",
 
   "description": "A computational perspective on what clustering actually means in single-cell analysis. Explores how feature selection, PCA, neighborhood construction, weighted similarity graphs, Leiden or Louvain community detection, and resolution parameters shape the final clusters, and why a computational cluster should not automatically be interpreted as a distinct biological population."
+},
+{
+  "slug": "Stable_Clusters_Biological_Reality",
+
+  "title": "A Cluster Is Stable Across Resolutions. Does That Make It Biologically Real?",
+
+  "date": "2026-10-01",
+
+  "file": "/blogs/Stable_Clusters_Biological_Reality.pdf",
+
+  "description": "A mathematical, theoretical, and practical examination of cluster stability in single-cell RNA-seq analysis. Explores resolution-dependent graph clustering, modularity, clustree, Jaccard similarity, adjusted Rand index, resampling stability, parameter robustness, donor reproducibility, biological state versus identity, continuous manifolds, and orthogonal validation, and explains why a computationally stable cluster should not automatically be interpreted as a biologically distinct population."
 }
 ];
