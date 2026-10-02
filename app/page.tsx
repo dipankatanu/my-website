@@ -144,7 +144,7 @@ export default function Home() {
 
           {/* Info pills - location, availability, etc. */}
           <div className="mt-8 flex flex-wrap gap-3">
-            <Pill>📍 Based in Ireland</Pill>
+            <Pill>📍 Based in India</Pill>
             <Pill>🤝 Open to collaborations</Pill>
             <Pill>🔬 Reproducible research</Pill>
           </div>
